@@ -1,0 +1,46 @@
+version: 2
+models:
+- name: fct_loans
+  description: Final ML-ready feature table — 50 features + binary target
+  columns:
+  - name: loan_id
+    tests:
+    - unique
+    - not_null
+  - name: default_flag
+    description: Binary target — 1=defaulted, 0=repaid
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - 0
+        - 1
+  - name: is_train
+    description: True for loans before 2016 (training set)
+    tests:
+    - not_null
+  - name: int_rate
+    tests:
+    - not_null
+  - name: fico_score
+    tests:
+    - not_null
+  - name: dti
+    tests:
+    - not_null
+  - name: log_annual_inc
+    tests:
+    - not_null
+  - name: grade_encoded
+    description: Ordinal grade — 1 (A, best) to 7 (G, worst)
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7

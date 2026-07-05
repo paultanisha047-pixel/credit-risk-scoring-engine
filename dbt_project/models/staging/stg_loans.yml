@@ -1,0 +1,37 @@
+version: 2
+sources:
+- name: raw
+  schema: main
+  tables:
+  - name: raw_loans
+    description: Raw Lending Club data — 2.2M rows, 151 cols
+models:
+- name: stg_loans
+  description: Staging — leakage dropped, types fixed, known outcomes only
+  columns:
+  - name: loan_id
+    tests:
+    - unique
+    - not_null
+  - name: loan_status
+    tests:
+    - accepted_values:
+        values:
+        - Fully Paid
+        - Charged Off
+  - name: int_rate
+    tests:
+    - not_null
+  - name: annual_inc
+    tests:
+    - not_null
+  - name: dti
+    tests:
+    - not_null
+  - name: term
+    tests:
+    - not_null
+    - accepted_values:
+        values:
+        - 36
+        - 60
