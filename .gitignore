@@ -1,0 +1,14 @@
+.venv/
+_pycache_/
+*.pyc
+
+# Secrets — never commit
+.env
+
+# DuckDB — large local database file
+data/
+
+# dbt
+dbt_project/target/
+dbt_project/logs/
+dbt_project/.user.yml

@@ -1,4 +1,15 @@
-﻿name: 'credit_risk'
+
+# dbt_project.yml
+# ---------------
+# Main dbt configuration file.
+# profile must match the name in ~/.dbt/profiles.yml
+# materialized controls how dbt stores model output in DuckDB:
+#   view  = virtual table recomputed on every query — fast to build
+#   table = physical table stored on disk — fast to query repeatedly
+# staging and intermediate are views — lightweight, just pass data through
+# marts are tables — fct_loans is read many times during ML training
+
+name: 'credit_risk'
 version: '1.0.0'
 config-version: 2
 
@@ -17,3 +28,4 @@ models:
       +materialized: view
     marts:
       +materialized: table
+
